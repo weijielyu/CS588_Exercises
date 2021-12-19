@@ -6,7 +6,7 @@ Map dot to the left turn indicator and dash to the right, and make the vehicle f
 
 ## Usage
 
-Open two terminal. In the first terminal, launch the joystick controller
+Open two terminals. In the first terminal, launch the joystick controller
 
 ```
 source devel/setup.bash
