@@ -1,4 +1,4 @@
-# CS588_exercise
+# CS588_Exercises
 
 
 ## About
