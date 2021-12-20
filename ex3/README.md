@@ -28,6 +28,15 @@ In the second terminal, play the prerecorded rosbag (You can download it [here](
 rosbag play data.bag /lidar1/scan:=/scan --clock -r 1.8
 ```
 
+To record your own rosbag, launch basic sensor in one terminal
+```
+roslaunch basic_launch gnss_sensor_init.launch
+```
+and record rosbag in another terminal with
+```
+rosbag record -O data.bag /SELECTED/TOPICS (/lidar1/scan, etc.)
+```
+
 ## Demo
 
 [![Exercise3](https://img.youtube.com/vi/bpT51nt85EQ/0.jpg)](https://www.youtube.com/watch?v=bpT51nt85EQ)
