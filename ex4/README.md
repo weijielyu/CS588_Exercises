@@ -22,3 +22,6 @@ rosrun gem_gnss gem_gnss_pp_tracker_pid.py
 You will see the car following a prerecorded track.
 
 ## Demo
+
+
+[![Exercise3](https://img.youtube.com/vi/iHDAfXnXQkk/0.jpg)](https://www.youtube.com/watch?v=iHDAfXnXQkk)
