@@ -124,7 +124,7 @@ class PurePursuit(object):
         self.goal       = 0            
         self.read_waypoints() 
 
-        self.desired_speed = 0.75  # m/s, reference speed
+        self.desired_speed = 0.5  # m/s, reference speed
         self.max_accel     = 0.4 # % of acceleration
         self.pid_speed     = PID(1.2, 0.2, 0.6, wg=20)
         self.speed_filter  = OnlineFilter(1.2, 30, 4)
@@ -219,7 +219,7 @@ class PurePursuit(object):
 
         # read recorded GPS lat, lon, heading
         dirname  = os.path.dirname(__file__)
-        filename = os.path.join(dirname, '../waypoints/xy_demo.csv')
+        filename = os.path.join(dirname, '../waypoints/xy_eight.csv')
 
         with open(filename) as f:
             path_points = [tuple(line) for line in csv.reader(f)]
@@ -265,7 +265,7 @@ class PurePursuit(object):
         return round(np.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2), 3)
 
     def start_pp(self):
-        with open('figure8.csv', 'w', newline='') as csvfile:
+        with open('xy_eight.csv', 'w', newline='') as csvfile:
             spamwriter = csv.writer(csvfile, delimiter=',')
             while not rospy.is_shutdown():
                 if (self.gem_enable == False):
@@ -325,7 +325,7 @@ class PurePursuit(object):
                 v2 = [np.cos(curr_yaw), np.sin(curr_yaw)]
                 temp_angle = self.find_angle(v1,v2)
                 # find correct look-ahead point by using heading information
-                if abs(temp_angle) < np.pi/2:
+                if abs(temp_angle) < np.pi/2 and (abs(self.goal - idx) <= 60 or idx < 10 or self.goal == 0):
                     self.goal = idx
                     break
 
